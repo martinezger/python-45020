@@ -39,6 +39,7 @@ not False # True
 # And
 True and False # False
 b = 1
+a = 2
 0 == (b * 0) and a == (33/33) and (5 == 1 + b ) # False
 
 # Or
