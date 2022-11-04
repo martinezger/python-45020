@@ -1,0 +1,18 @@
+{
+    "usuario_1": {
+        "nombre": "Federico",
+        "Apellido": "Martinez",
+        "Telefonos": [
+            "555-1234",
+            "555-9876"
+        ]
+    },
+    "usuario_2": {
+        "nombre": "German",
+        "Apellido": "Martinez",
+        "Telefonos": [
+            "555-1234",
+            "555-9876"
+        ]
+    }
+}

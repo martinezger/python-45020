@@ -49,6 +49,7 @@ while True:
     if salir == 'y':
         break
 
+dict_user = {"usuario_123":["german", "35"]}
 
 # Actualización
 while True:
