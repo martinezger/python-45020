@@ -3,6 +3,11 @@ import math
 class Punto:
     pass
 
+punto_a = Punto()
+punto_a.x = 1
+
+
+punto_b = Punto()
 
 def print_punto(un_punto):
     print("\tx\ty")
