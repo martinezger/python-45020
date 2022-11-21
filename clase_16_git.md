@@ -1,5 +1,5 @@
 # Uso de Git
-Todos los comandos que estan en este archivo tienen que ser ejecutados en una consola BASH.
+Todos los comandos que estan en este archivo tienen que ser ejecutados en una consola windows or bash.
 - La consola bash se instala junto con GIT en windows.
 - La consola bash en MacOS viene con el SO y solo tienen que buscar por TERMINAL en spotlight (cmd+espacio).
 
