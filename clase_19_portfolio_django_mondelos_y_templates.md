@@ -121,4 +121,4 @@ Se cargo con éxito los usuarios de pruebas
 
 Despues volvemos a correr el servidor de pruebas y veremos una lista de familiares.
 
-Siguientes pasos [clase_19_portfolio_django_mondelos_y_templates.md](clase_19_portfolio_django_mondelos_y_templates.md)
+Siguientes pasos [clase_20_herencia_y_formularios.md](clase_20_herencia_y_formularios.md)
