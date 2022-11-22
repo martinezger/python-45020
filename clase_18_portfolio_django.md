@@ -74,3 +74,5 @@ urlpatterns = [
   ```git commit -m "primer commit de mi proyecto"```
   
   ```git push origin main```
+  
+ Siguiente pasos [clase_19_portfolio_django_mondelos_y_templates.md](clase_19_portfolio_django_mondelos_y_templates.md)
