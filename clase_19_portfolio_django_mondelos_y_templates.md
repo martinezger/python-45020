@@ -60,8 +60,6 @@ Partiendo del siguiente ejemplo [clase_18_portfolio_django.md](clase_18_portfoli
     urlpatterns = [
         path('admin/', admin.site.urls),
         path('saludar/', index),
-        path('saludar/<nombre>/<apellido>/', index_dos),
-        path('mostrar-notas/', index_tres),
         path('mi-familia/', monstrar_familiares), # nueva vista
     ]
    
