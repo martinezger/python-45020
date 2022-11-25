@@ -6,8 +6,8 @@ Partiendo del siguiente ejemplo [clase_19_portfolio_django_mondelos_y_templates.
   
   ```python
   from django import forms
-    class Buscar(forms.Form):
-        nombre = forms.CharField(max_length=100)
+  class Buscar(forms.Form):
+      nombre = forms.CharField(max_length=100)
   ```
 
 - Segundo Creamos un template en `ejemplo/templates/ejemplo` con el nombre `buscar.html`, y colocamos el siguiente código:
