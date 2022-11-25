@@ -75,4 +75,4 @@ urlpatterns = [
   
   ```git push origin main```
   
- Siguiente pasos [clase_19_portfolio_django_mondelos_y_templates.md](clase_19_portfolio_django_mondelos_y_templates.md)
+ Siguiente paso [clase_19_portfolio_django_mondelos_y_templates.md](clase_19_portfolio_django_mondelos_y_templates.md)
