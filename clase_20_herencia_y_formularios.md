@@ -1,7 +1,7 @@
 # Pasos para poder implementar formulario
 Partiendo del siguiente ejemplo [clase_19_portfolio_django_mondelos_y_templates.md](clase_19_portfolio_django_mondelos_y_templates.md), Vamos a implementar un formulario:
 
-- Primero tenemos que creamos un nuenvo modulo python dentro del paquete ejemplo con el nombre, `forms.py`
+- Primero tenemos que crear un nuevo modulo python dentro del paquete ejemplo con el nombre, `forms.py`
   en el copiamos lo siguiente:
   
   ```python
