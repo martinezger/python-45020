@@ -28,9 +28,9 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
   </html>
   ```
 
-- Segundo vamos a definir una vista basada en clases para crear un familiar, para ello:
+- Segundo vamos a definir una vista basada en clases para listar un familiar, para ello:
   
-    - Tenemos que importar la vista generica de cración, con lo cual en la parte superior:
+    - Tenemos que importar la vista generica de listar, con lo cual en la parte superior:
 
       ```python
       from django.shortcuts import render, get_object_or_404
@@ -41,7 +41,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       ```
 
    
-  - En la parte inferior de `ejemplo/views.py` agregamos una nueva clase, que hereda de CreateView, copiamos lo siguiente :
+  - En la parte inferior de `ejemplo/views.py` agregamos una nueva clase, que hereda de ListView, copiamos lo siguiente :
     
     ```python
     class FamiliarList(ListView):
