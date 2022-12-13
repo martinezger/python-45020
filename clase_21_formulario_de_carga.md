@@ -69,18 +69,12 @@ Partiendo del siguiente ejemplo [clase_20_herencia_y_formularios.md](clase_20_he
     ```python
       from django.contrib import admin
       from django.urls import path
-      from ejemplo.views import (index, index_dos, index_tres, 
-                                imc, monstrar_familiares, BuscarFamiliar, AltaFamiliar)#<--- NUEVO IMPORT
-      from blog.views import index as blog_index
+      from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, AltaFamiliar)#<--- NUEVO IMPORT
 
       urlpatterns = [
           path('admin/', admin.site.urls),
           path('saludar/', index),
-          path('saludar/<nombre>/<apellido>/', index_dos),
-          path('mostrar-notas/', index_tres),
-          path('imc/<int:peso>/<int:altura>', imc),
           path('mi-familia/', monstrar_familiares),
-          path('blog/', blog_index),
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()) # NUEVA RUTA PARA BUSCAR FAMILIAR
       ]
