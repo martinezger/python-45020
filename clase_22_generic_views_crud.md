@@ -52,19 +52,12 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
     ```python
       from django.contrib import admin
       from django.urls import path
-      from ejemplo.views import (index, index_dos, index_tres, 
-                                imc, monstrar_familiares, BuscarFamiliar, 
+      from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
                                 AltaFamiliar, ActualizarFamiliar, FamiliarList) # <--- NUEVO IMPORT
-      from blog.views import index as blog_index
-
       urlpatterns = [
           path('admin/', admin.site.urls),
           path('saludar/', index),
-          path('saludar/<nombre>/<apellido>/', index_dos),
-          path('mostrar-notas/', index_tres),
-          path('imc/<int:peso>/<int:altura>', imc),
           path('mi-familia/', monstrar_familiares),
-          path('blog/', blog_index),
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()), 
@@ -124,19 +117,14 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
     ```python
       from django.contrib import admin
       from django.urls import path
-      from ejemplo.views import (index, index_dos, index_tres, 
-                                imc, monstrar_familiares, BuscarFamiliar, 
+      from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
                                 AltaFamiliar, ActualizarFamiliar, FamiliarCrear) # <--- NUEVO IMPORT
       from blog.views import index as blog_index
 
       urlpatterns = [
           path('admin/', admin.site.urls),
           path('saludar/', index),
-          path('saludar/<nombre>/<apellido>/', index_dos),
-          path('mostrar-notas/', index_tres),
-          path('imc/<int:peso>/<int:altura>', imc),
           path('mi-familia/', monstrar_familiares),
-          path('blog/', blog_index),
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
@@ -197,19 +185,13 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
     ```python
       from django.contrib import admin
       from django.urls import path
-      from ejemplo.views import (index, index_dos, index_tres, 
-                                imc, monstrar_familiares, BuscarFamiliar, 
+      from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
                                 AltaFamiliar, ActualizarFamiliar, FamiliarCrear) # <--- NUEVO IMPORT
-      from blog.views import index as blog_index
 
       urlpatterns = [
           path('admin/', admin.site.urls),
           path('saludar/', index),
-          path('saludar/<nombre>/<apellido>/', index_dos),
-          path('mostrar-notas/', index_tres),
-          path('imc/<int:peso>/<int:altura>', imc),
           path('mi-familia/', monstrar_familiares),
-          path('blog/', blog_index),
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
@@ -251,19 +233,13 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
     ```python
       from django.contrib import admin
       from django.urls import path
-      from ejemplo.views import (index, index_dos, index_tres, 
-                                imc, monstrar_familiares, BuscarFamiliar, 
+      from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
                                 AltaFamiliar, ActualizarFamiliar, FamiliarCrear) # <--- NUEVO IMPORT
-      from blog.views import index as blog_index
 
       urlpatterns = [
           path('admin/', admin.site.urls),
           path('saludar/', index),
-          path('saludar/<nombre>/<apellido>/', index_dos),
-          path('mostrar-notas/', index_tres),
-          path('imc/<int:peso>/<int:altura>', imc),
           path('mi-familia/', monstrar_familiares),
-          path('blog/', blog_index),
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
