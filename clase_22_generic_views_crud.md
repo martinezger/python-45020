@@ -1,6 +1,68 @@
 # Pasos para poder implementar generic views CRUD
 Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_formulario_de_actualizar.md), Vamos a implementar las vistas genéricas para hacer crud que django trae:
 
+### DETAIL VIEW
+
+- Vamos a crear un template en `ejemplo/templates/ejemplo` con el nombre `familiar_detail.html` y agregamos lo siguiente:
+  
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<ul>
+
+{% block buscar %} {% endblock %}
+
+<ul>
+    <li>{{object.id}} -- {{object.direccion}} -- {{object.nombre}}</li>
+</ul>
+
+</body>
+</html>
+```
+
+- Segundo vamos a definir una vista basada en clases para crear un detalle de familiar, para ello:
+  
+    - Tenemos que importar la vista generica para detalle, con lo cual en la parte superior:
+
+      ```python
+      from django.shortcuts import render, get_object_or_404
+      from ejemplo.models import Familiar
+      from ejemplo.forms import Buscar, FamiliarForm
+      from django.views import View 
+      from django.views.generic import DetailView # <----- NUEVO IMPORT
+      ```
+
+   
+  - En la parte inferior de `ejemplo/views.py` agregamos una nueva clase, que hereda de DetailView, copiamos lo siguiente :
+    
+    ```python
+    class (DetailView):
+      model = Familiar
+    ```
+  - Tercero tenemos que routear la vista con una nueva url en `project/urls.py`:
+    
+    ```python
+      from django.contrib import admin
+      from django.urls import path
+      from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
+                                AltaFamiliar, ActualizarFamiliar, FamiliarDetalle) # <--- NUEVO IMPORT
+      urlpatterns = [
+          path('admin/', admin.site.urls),
+          path('saludar/', index),
+          path('mi-familia/', monstrar_familiares),
+          path('mi-familia/buscar', BuscarFamiliar.as_view()), 
+          path('mi-familia/alta', AltaFamiliar.as_view()),
+          path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()), 
+          path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()), # NUEVA RUTA PARA DETALLE DE FAMILIAR
+      ]
+    ```
 ### LIST VIEW
 
 - Vamos a crear un template en `ejemplo/templates/ejemplo` con el nombre `familiar_list.html` y agregamos lo siguiente:
@@ -37,7 +99,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       from ejemplo.models import Familiar
       from ejemplo.forms import Buscar, FamiliarForm
       from django.views import View 
-      from django.views.generic import ListView # <----- NUEVO IMPORT
+      from django.views.generic import DetailView, ListView # <----- NUEVO IMPORT
       ```
 
    
@@ -53,7 +115,8 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       from django.contrib import admin
       from django.urls import path
       from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
-                                AltaFamiliar, ActualizarFamiliar, FamiliarList) # <--- NUEVO IMPORT
+                                AltaFamiliar, ActualizarFamiliar,
+                                FamiliarDetalle, FamiliarList) # <--- NUEVO IMPORT
       urlpatterns = [
           path('admin/', admin.site.urls),
           path('saludar/', index),
@@ -61,6 +124,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()), 
+          path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()),
           path('panel-familia/', FamiliarList.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
 
       ]
@@ -101,7 +165,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       from ejemplo.models import Familiar
       from ejemplo.forms import Buscar, FamiliarForm
       from django.views import View 
-      from django.views.generic import ListView, CreateView # <----- NUEVO IMPORT
+      from django.views.generic import DetailView, ListView, CreateView # <----- NUEVO IMPORT
       ```
 
    
@@ -118,8 +182,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       from django.contrib import admin
       from django.urls import path
       from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
-                                AltaFamiliar, ActualizarFamiliar, FamiliarCrear) # <--- NUEVO IMPORT
-      from blog.views import index as blog_index
+                                AltaFamiliar, ActualizarFamiliar, FamiliarDetalle, FamiliarList, FamiliarCrear) # <--- NUEVO IMPORT
 
       urlpatterns = [
           path('admin/', admin.site.urls),
@@ -128,6 +191,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
+          path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()),
           path('panel-familia/', FamiliarList.as_view()), 
           path('panel-familia/crear', FamiliarCrear.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
 
@@ -168,7 +232,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       from ejemplo.models import Familiar
       from ejemplo.forms import Buscar, FamiliarForm
       from django.views import View 
-      from django.views.generic import ListView, CreateView, DeleteView # <----- NUEVO IMPORT
+      from django.views.generic import DetailView, ListView, CreateView, DeleteView # <----- NUEVO IMPORT
       ```
 
    
@@ -186,7 +250,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       from django.contrib import admin
       from django.urls import path
       from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
-                                AltaFamiliar, ActualizarFamiliar, FamiliarCrear) # <--- NUEVO IMPORT
+                                AltaFamiliar, ActualizarFamiliar, DetalleFamiliar, FamiliarList, FamiliarCrear, FamiliarBorrar) # <--- NUEVO IMPORT
 
       urlpatterns = [
           path('admin/', admin.site.urls),
@@ -195,6 +259,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
+          path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()),
           path('panel-familia/', FamiliarList.as_view()), 
           path('panel-familia/crear', FamiliarCrear.as_view()),
           path('panel-familia/<int:pk>/borrar', FamiliarBorrar.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
@@ -215,7 +280,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       from ejemplo.models import Familiar
       from ejemplo.forms import Buscar, FamiliarForm
       from django.views import View 
-      from django.views.generic import ListView, CreateView, DeleteView, UpdateView # <----- NUEVO IMPORT
+      from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView # <----- NUEVO IMPORT
       ```
 
    
@@ -234,7 +299,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
       from django.contrib import admin
       from django.urls import path
       from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
-                                AltaFamiliar, ActualizarFamiliar, FamiliarCrear) # <--- NUEVO IMPORT
+                                AltaFamiliar, ActualizarFamiliar, FamiliarDetalle, FamiliarList, FamiliarCrear,FamiliarBorrar, FamiliarActualizar) # <--- NUEVO IMPORT
 
       urlpatterns = [
           path('admin/', admin.site.urls),
@@ -243,6 +308,7 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_actualizar.md](clase_21_
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
+          path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()),
           path('panel-familia/', FamiliarList.as_view()), 
           path('panel-familia/crear', FamiliarCrear.as_view()),
           path('panel-familia/<int:pk>/borrar', FamiliarBorrar.as_view()), 
