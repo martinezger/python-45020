@@ -66,19 +66,13 @@ Partiendo del siguiente ejemplo [clase_21_formulario_de_carga.md](clase_21_formu
     ```python
       from django.contrib import admin
       from django.urls import path
-      from ejemplo.views import (index, index_dos, index_tres, 
-                                imc, monstrar_familiares, BuscarFamiliar, 
+      from ejemplo.views import (index, monstrar_familiares, BuscarFamiliar, 
                                 AltaFamiliar, ActualizarFamiliar) # <--- NUEVO IMPORT
-      from blog.views import index as blog_index
 
       urlpatterns = [
           path('admin/', admin.site.urls),
           path('saludar/', index),
-          path('saludar/<nombre>/<apellido>/', index_dos),
-          path('mostrar-notas/', index_tres),
-          path('imc/<int:peso>/<int:altura>', imc),
           path('mi-familia/', monstrar_familiares),
-          path('blog/', blog_index),
           path('mi-familia/buscar', BuscarFamiliar.as_view()), 
           path('mi-familia/alta', AltaFamiliar.as_view()),
           # EL paramatro pk hace referencia al identificador único en la base de datos para Familiar.
